@@ -2,7 +2,10 @@
 import axios from 'axios';
 
 class User{
-  
+  constructor(email, nome){
+    this._email = email;
+    this._nome = nome;
+  }
 
 
 // Função para enviar os dados de registro para o servidor

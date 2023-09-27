@@ -1,5 +1,5 @@
 import { tokens } from "@/app/theme";
-import { Button, Box } from "@mui/material";
+import { Button, Box, Typography, Slide } from "@mui/material";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -24,7 +24,7 @@ export default function Navbar({buttons, logo}) {
     <>
     <ThemeProvider theme={theme}>
       <Box className="flex py-3 shadow-lg lg:px-40 md:px-10" sx={{
-        backgroundColor: tokens.blueAccent[300], 
+        backgroundColor: tokens.blueAccent[300]+"77", 
         flexDirection: {sm: 'row', xs: 'column'},
         justifyContent: 'space-between',
         alignItems: 'center'
@@ -42,6 +42,26 @@ export default function Navbar({buttons, logo}) {
           ))}
         </Box>
       </Box>
+      {/* Mostar se usuário não está cadastrado */}
+      {/* <Box sx={{
+        display: 'flex',
+        backgroundColor: tokens.blueAccent[900],
+        height: '2.3em', 
+        flexDirection: {sm: 'row', xs: 'column'},
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+
+        
+
+        <Slide direction="left" in={true} mountOnEnter unmountOnExit>
+          <Typography variant={`${
+              theme.breakpoints.down("md") ? "body2" : "body1"
+            }`} color={'#fff'} textAlign={'center'} maxHeight={'2em'} overflow={'hidden'} whiteSpace={'nowrap'} textOverflow={'ellipsis'}> 
+          Registre-se para receber alertas de cheia ou inundação!
+          </Typography>
+        </Slide> 
+      </Box> */}
       </ThemeProvider>
     </>
   );

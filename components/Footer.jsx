@@ -1,12 +1,15 @@
 import { tokens } from "@/app/theme";
 import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 
 
 export default function Footer() {
     return(
         <>
             <Box py='2em' px={{sm: '5em', xs: '2em'}} width='100vw' mt='5em' classname='shadow-lg' sx={{
-                    background: tokens.blueAccent[200], color: "#000000"
+                    background: tokens.blueAccent[300]+"77",
+                    color: "#000000",
+                    backdropFilter: 'blur(2px)',
                 }}>
                 <Box display='flex' justifyContent='space-between' flexDirection='row'>
                     <Box sx={{
@@ -16,7 +19,7 @@ export default function Footer() {
                                 display: 'flex',
                                 alignItems: 'center',
                         }}>
-                        <img src='/logo_horizontal.png' alt='PlaMoNa'/>
+                        <Image src='/logo_horizontal.png' alt='PlaMoNa' width={1000} height={400}/>
                     </Box>
                     <Box sx={{
                                 objectFit: 'contain',
@@ -25,7 +28,7 @@ export default function Footer() {
                                 display: 'flex',
                                 alignItems: 'center',
                         }}>
-                        <img src='/ifsul_colorido.png' alt='IFSUL'/>
+                        <Image src='/ifsul_colorido.png' alt='IFSUL' width={1474} height={268}/>
                     </Box>
                 </Box>
                 <Typography variant="body2" textAlign='center'>

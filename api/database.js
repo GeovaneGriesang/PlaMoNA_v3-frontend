@@ -22,6 +22,8 @@ export const obterComparacao = async (periodo, comp1, comp2) => {
   }
 };
 
+//Função para obter dia 
+//Periodo pode ser "dia" ou "diaEsp" <- "dia" pega do dia atual, e "diaEsp" pega de qualquer dia (usado no gráfico com flechinha)
 export const obterDia = async (periodo, comp1) => {
   try {
     const response = await axios.post('http://127.0.0.1:4000/comparacao', {"periodo": periodo, "comp_1": comp1});

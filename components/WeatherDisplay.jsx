@@ -7,30 +7,19 @@ import ReactAnimatedWeather from 'react-animated-weather';
 import weatherData from '@/api/climaicons.json'
 
 
-function findIconByCode(code) {
+function findIconByCode(code, isDay) {
     const weatherEntry = weatherData.find(entry => entry.code === code);
-    return weatherEntry ? weatherEntry.icon : null;
+    if(isDay===1){
+        return weatherEntry ? weatherEntry.day : null;
+    }else if(isDay===0){
+        return weatherEntry ? weatherEntry.night : null;
+    }else{
+        return weatherEntry ? weatherEntry.icon : null;
+    }
 }
 
 export default function WeatherDisplay() {
     const [data, setData] = useState({});
-    const [currentDate, setCurrentDate] = useState(null);
-
-    useEffect(() => {
-      // Função para formatar a data
-    const formatCurrentDate = (timestamp) => {
-        const date = new Date(timestamp * 1000); // Converte o timestamp para milissegundos
-        const options = { weekday: 'long', day: 'numeric', month: 'long'};
-        const formattedDate = date.toLocaleDateString('pt-BR', options);
-        return `${formattedDate}`;
-    };
-
-      // Simulando a obtenção da data (use o valor real do timestamp da sua API aqui)
-    const timestamp = 1695764565;
-
-      // Formata a data e define no estado
-    setCurrentDate(formatCurrentDate(timestamp));
-    }, []);
 
     useEffect(() => {
         async function fetchData() {
@@ -41,22 +30,23 @@ export default function WeatherDisplay() {
 
         fetchData();
     }, []);
+
     return(
         <ThemeProvider theme={theme}>
-            <Paper sx={{
+            <Box sx={{
                         width: {sm: '30em', xs: '20em'},
-                        height: {sm: '26em', sx: '32em'},
-                        padding: '1em',
+                        height: {sm: '26em', xs: '31em'},
+                        padding: '.5em',
                         margin: '1em',
-                        backgroundColor: tokens.primary[600],
+                        backgroundColor: tokens.primary[600]+"88",
                         borderRadius: '2em',
                         }}>
                 {data && data.condition && (
                     <Box>
                         <Box sx={{
-                            borderRadius: '1em',
-                            background: 'linear-gradient( 105deg, #3333ff44, #ffffff44)',
-                            height: {sm: '24em', sx: '30em'},
+                            borderRadius: '1.5em',
+                            backgroundColor: tokens.blueAccent[600]+"0f",
+                            height: {sm: '25em', xs: '30em'},
                             padding: '1em',
                         }}>
                             <Box sx={{
@@ -65,20 +55,19 @@ export default function WeatherDisplay() {
                                 padding: '2em',
                                 flexDirection: {sm:'row', xs:'column'}
                             }}>
-                                <Box height={'auto'} alignContent={'center'} m={'auto 0'} width={'10em'}>
+                                <Box height={'auto'} alignContent={'center'} m={'auto 0'} width={'5em'}>
                                 <ReactAnimatedWeather
-                                    icon={findIconByCode(data.condition.code)}
+                                    icon={findIconByCode(data.condition.code, data.is_day)}
                                     color={tokens.blueAccent[300]}
                                     size={64}
                                     animate={true}
                                 />
                                 </Box>
                                 <Box>
-                                    <Typography variant='body1' color={tokens.grey[300]}>{currentDate}</Typography>
-                                    <Typography variant='h4' color={tokens.grey[100]}>{data.condition.text}</Typography>
                                     <Typography variant='body1' color={tokens.grey[300]}>Venâncio Aires</Typography>
+                                    <Typography variant='h4' color={tokens.grey[100]}>{Math.floor(data.temp_c) + "°C"}</Typography>
+                                    <Typography variant='body1' color={tokens.grey[100]}>{data.condition.text}</Typography>
                                 </Box>
-                                <Typography variant='h3' color={tokens.grey[100]}>{Math.floor(data.temp_c) + "°C"}</Typography>
                             </Box>
                             <Box>
                                 <Divider sx={{
@@ -136,7 +125,7 @@ export default function WeatherDisplay() {
                         </Box>
                     </Box>
                 )}
-            </Paper>
+            </Box>
         </ThemeProvider>
     );
 }

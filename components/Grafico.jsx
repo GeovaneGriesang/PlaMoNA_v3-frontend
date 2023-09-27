@@ -116,7 +116,7 @@ export default function Grafico({data}) {
         margin={
             {
                 top: 50,
-                right: 20,
+                right: 10,
                 bottom: 50,
                 left: 50
             }
@@ -133,17 +133,6 @@ export default function Grafico({data}) {
         yFormat=" >-.2f"
         curve="monotoneX"
         axisTop={null}
-        axisRight={
-            {
-                tickValues: 7,
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                format: '',
-                legend: '',
-                legendOffset: 0
-            }
-        }
         axisBottom={
             {
                 tickValues: 7,
@@ -168,7 +157,7 @@ export default function Grafico({data}) {
             }
         }
         enableGridX={true}
-        colors={{ scheme: 'category10' }}
+        colors={{ scheme: 'dark2' }}
         borderColor={{ from: 'color' }}
         lineWidth={3}
         pointSize={8}

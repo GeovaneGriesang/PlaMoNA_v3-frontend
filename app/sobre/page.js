@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
     Box,
     Grid,
@@ -7,38 +7,25 @@ import {
     ThemeProvider,
     Typography
 } from '@mui/material';
-import { obterMedicao } from '@/api/database';
 import Grafico from '@/components/Grafico';
-import { theme, tokens } from './theme';
+import { theme, tokens } from '../theme';
 import Navbar from '@/components/Navbar';
 import WeatherDisplay from '@/components/WeatherDisplay';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
-import GraficoComp from '@/components/GraficoComp';
 
 const buttons = [
+    {
+      text: "home",
+      href: "/",
+    },
     {
       text: "Monitoramento",
       href: "/monitoramento",
     },
-    {
-      text: "Sobre",
-      href: "/sobre",
-    },
   ];
 
 export default function Page() {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        async function fetchData() {
-            const result = await obterMedicao('semana');
-            setData(result);
-        }
-
-        fetchData();
-    }, []);
-
     return (
         <>
         <ThemeProvider theme={theme}>
@@ -63,8 +50,8 @@ export default function Page() {
                     justifyContent: 'center',
                 }}>
                     <Box sx={{
-                            width: {sm: '30em', xs: '20em'},
-                            height: '26em',
+                            width: {sm: '70em', xs: '20em'},
+                            height: 'auto',
                             padding: '.5em',
                             margin: '1em',
                             backgroundColor: tokens.primary[600]+"88",
@@ -73,13 +60,14 @@ export default function Page() {
                             <Box sx={{
                                 borderRadius: '1.5em',
                                 backgroundColor: tokens.blueAccent[600]+"0f",
-                                height: '25em',
+                                height: 'auto',
                                 padding: '1em',
                             }}>
-                                <Grafico data={data} />
+                                <Typography variant='body1' color={'#fff'} textAlign={'justify'}>
+                                Historicamente, as comunidades que habitam em regiões de inundação de rios e córregos têm enfrentado os efeitos de chuvas intensas e das enchentes que as seguem, causando riscos à vida, danos materiais e doenças decorrentes do contato com águas contaminadas. Tais eventos poderiam ser amenizados por uma comunicação mais rápida e efetiva por parte dos órgãos públicos, mas a falta de meios automáticos de monitoramento do nível da água dispostos ao longo dos cursos d’água e de sistemas de alerta à população, muitas vezes dificulta a ação rápida da população para proteger suas vidas e bens materiais. Pensando nisso, o presente trabalho propõe um sistema para monitoramento de nível de águas, que é composto por um equipamento de monitoramento de operação remota e uma plataforma virtual de gerenciamento online com emissão de alertas à população. É apresentado o funcionamento do equipamento que monitora o nível de águas e transmite os dados a um servidor online via comunicação GSM-GPRS, também é apresentada a plataforma virtual de gerenciamento e suas funcionalidades, que incluem o armazenamento em banco de dados, consulta online das variáveis monitoradas pelo equipamento e emissão de alertas para pessoas cadastradas no sistema, oferecendo assim uma alternativa para o gerenciamento de crises causadas por inundações.
+                                </Typography>
                             </Box>
                     </Box>
-                    <WeatherDisplay />
                 </Box>
                 <Footer/>
             </Box>
