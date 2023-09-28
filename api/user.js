@@ -7,7 +7,6 @@ class User{
     this._nome = nome;
   }
 
-
 // Função para enviar os dados de registro para o servidor
   async function registerUser ( nome, cpf, endereco, email, telefone, alerta_sms, alerta_email, senha ) {
     try {
