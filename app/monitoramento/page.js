@@ -20,12 +20,20 @@ import GraficoComp from '@/components/GraficoComp';
 
 const buttons = [
     {
-      text: "Home",
+      text: "home",
       href: "/",
     },
     {
-      text: "Sobre",
-      href: "/sobre",
+      text: "Monitoramento",
+      href: "/monitoramento",
+    },
+    {
+        text: "Sobre",
+        href: "/sobre",
+    },
+    {
+        text: "Cadastro",
+        href: "/cadastro",
     },
   ];
 

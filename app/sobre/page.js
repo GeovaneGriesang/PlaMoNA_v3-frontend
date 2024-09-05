@@ -23,6 +23,14 @@ const buttons = [
       text: "Monitoramento",
       href: "/monitoramento",
     },
+    {
+        text: "Sobre",
+        href: "/sobre",
+    },
+    {
+        text: "Cadastro",
+        href: "/cadastro",
+    },
   ];
 
 export default function Page() {
