@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Footer() {
     return(
         <>
-            <Box py='2em' px={{sm: '5em', xs: '2em'}} width='100vw' mt='5em' classname='shadow-lg' sx={{
+            <Box py='2em' px={{sm: '5em', xs: '2em'}} width='100vw' mt='5em' className='shadow-lg' sx={{
                     background: tokens.blueAccent[300]+"77",
                     color: "#000000",
                     backdropFilter: 'blur(2px)',

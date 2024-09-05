@@ -1,19 +1,55 @@
 import { loginUser } from "@/api/user";
 import { tokens } from "@/app/theme";
-import { Box, Button } from "@mui/material";
-import React from 'react';
+import { Box, Button, Input} from "@mui/material";
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import axios from "axios";
 
 export default function FormLogin(){
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [user, setUser] = useState(null);
+    const [logando, setLogando] = useState(false);
+    
+        async function fetchData() {
+            const usuario = await loginUser(email, senha);
+            setUser(usuario);
+        }
+    
+        
+
 
     const efetuarLogin = () => {
-        if(email.match('@')){
-                loginUser(email, senha);
+        if(!logando){
+            setLogando(true);
+            if(email.match('@')){
+                fetchData();
+                setTimeout(function() {
+                    if(user!=null){
+                        do{
+                        alert("Logado com sucesso!");
+                        console.log(user);
+                        localStorage.setItem("userName", user.nome);
+                        localStorage.setItem("userMail", user.email);
+                        localStorage.setItem("userCPF", user.cpf);
+                        localStorage.setItem("userEndereco", user.endereco);
+                        localStorage.setItem("userTelefone", user.telefone);
+                        localStorage.setItem("userAlertaSms", user.alerta_sms);
+                        localStorage.setItem("userAlertaEmail", user.alerta_email);
+                        localStorage.setItem("userAcess", user.acesso);
+                        } while(user==undefined);
+                        setUser(null);
+                    }else{
+                        alert('Email ou senha incorretos');
+                    }
+                    setLogando(false);
+                    
+                }, 500);
+            }else{
+                alert("E-mail inválido");
+            }
         }else{
-            alert("E-mail inválido");
+            alert('logando, aguarde');
         }
     };
 
@@ -40,9 +76,9 @@ export default function FormLogin(){
                             flexWrap: 'wrap',
                             justifyContent: 'center',
                         }}>
-                            <label>
+                        <label>
                         E-mail: <br/>
-                        <input  
+                        <Input  
                             name='email' 
                             pattern="email" 
                             placeholder='exemplo@exemplo.com'
@@ -51,7 +87,7 @@ export default function FormLogin(){
                         </label>
                         </Box>
 
-                        <hr />
+                        
 
                         <Box sx={{
                             padding: '.5em',
@@ -63,7 +99,7 @@ export default function FormLogin(){
                         }}>
                         <label>
                         Senha: <br/>
-                        <input 
+                        <Input 
                             type='password'
                             onChange={e => setSenha(e.target.value)}
                         />

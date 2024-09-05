@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {
     Box,
+    Button,
     MenuItem,
     Select
 } from '@mui/material';
@@ -8,28 +9,38 @@ import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {DatePicker, LocalizationProvider} from '@mui/x-date-pickers';
 import Grafico from './Grafico';
 import { obterComparacao } from '@/api/database';
+import { Refresh } from '@mui/icons-material';
 
-const fetchData = async (periodo, dia1, dia2, setData) => {
-    const res = await obterComparacao(periodo, dia1, dia2);
-    setData(res);
-};
 
 export default function GraficoComp() {
-    const [periodo, setPeriodo] = useState('semana');
+    
+    if(localStorage.getItem('periodoComp')==null){
+        localStorage.setItem('periodoComp', 'dia');
+    }
+    const [periodo, setPeriodo] = useState(localStorage.getItem('periodoComp'));
     const [dia1, setDia1] = useState(new Date().toISOString().substring(0, 10));
     const [dia2, setDia2] = useState(new Date().toISOString().substring(0, 10));
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        setData([]);
-        setTimeout(function() {
-            fetchData(periodo, dia1, dia2, setData);
-          }, 200);
-      }, [periodo, dia1, dia2]);
+        async function fetchData() {
+            setData([]);
+            
+            const result = await obterComparacao(periodo, localStorage.getItem("data1"), localStorage.getItem("data2"));
+            console.log("resultado: "+result);
+            setData(result);
+            
+        }
+        fetchData();
+      }, []);
 
+     
 
     const handlePeriodo = (event) => {
-        setPeriodo(event.target.value);
+        
+        localStorage.setItem('periodoComp', event.target.value);
+        location.reload();
+        setPeriodo(localStorage.getItem('periodoComp'));
     };
 
     return (
@@ -53,17 +64,22 @@ export default function GraficoComp() {
                 </Select>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker label="Data 1"
+                        dateFormat="yyyy/MM/dd"
                         onChange={
-                            (newValue) => setDia1(newValue)
+                            (newValue) => localStorage.setItem("data1", newValue)
+                            
                         }
                         
                         />
                     <DatePicker label="Data 2"
+                        dateFormat="yyyy/MM/dd"
                         onChange={
-                            (newValue) => setDia2(newValue)
+                            (newValue) => localStorage.setItem("data2", newValue)
+                            
                         }
                         openTo="day"
                         />
+                        <Button></Button>
                 </LocalizationProvider>
             </Box>
             <Box justifyContent={'center'} sx={{

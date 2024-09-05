@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     Box,
     Grid,
@@ -16,6 +16,9 @@ import Footer from '@/components/Footer';
 import Image from 'next/image';
 import GraficoComp from '@/components/GraficoComp';
 
+
+
+
 const buttons = [
     {
       text: "home",
@@ -30,8 +33,12 @@ const buttons = [
         href: "/sobre",
     },
     {
-        text: "Cadastro",
-        href: "/cadastro",
+        text: "Login",
+        href: "/login",
+    },
+    {
+        text: "Configurar Sensor",
+        href: "/configurarSensor",
     },
   ];
 
@@ -41,6 +48,14 @@ export default function Page() {
     useEffect(() => {
         async function fetchData() {
             const result = await obterMedicao('semana');
+            const hoje = new Date()
+            const dia = hoje.getDate().toString().padStart(2,'0')
+            const mes = String(hoje.getMonth() + 1).padStart(2,'0')
+            const ano = hoje.getFullYear()
+            const ontem = dia-1;
+
+            localStorage.setItem("data1", ano+"/"+mes+"/"+dia);
+            localStorage.setItem("data2", ano+"/"+mes+"/"+ontem);
             setData(result);
         }
 

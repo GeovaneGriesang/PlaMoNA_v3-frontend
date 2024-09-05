@@ -28,8 +28,8 @@ const buttons = [
         href: "/sobre",
     },
     {
-        text: "Cadastro",
-        href: "/cadastro",
+        text: "Login",
+        href: "/login",
     },
   ];
 

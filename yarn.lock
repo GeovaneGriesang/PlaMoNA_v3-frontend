@@ -62,6 +62,28 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
+"@bluelibs/core@^1.0.0":
+  version "1.2.6"
+  resolved "https://registry.npmjs.org/@bluelibs/core/-/core-1.2.6.tgz"
+  integrity sha512-VJ2Ym4wfuMc1JeLZmzEw2kAtygFmPXeUQMSI0emuVNVCdLp613DohF8GpUuIosbfiKaz91Dlg+HKuWNde2v59g==
+  dependencies:
+    reflect-metadata "^0.1.13"
+    typedi "^0.10.0"
+
+"@bluelibs/email-bundle@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@bluelibs/email-bundle/-/email-bundle-1.0.3.tgz"
+  integrity sha512-WJxOVmzxEw81lOpANNIBBa6upb4Yak2BA8ryyabo0Q9GOJnfRsTP5ixXmu1eEJFR20tL1hjmHVJF+6EGVI9cPQ==
+  dependencies:
+    nodemailer "^6.4.6"
+
+"@bluelibs/logger-bundle@^1.0.0":
+  version "1.5.2"
+  resolved "https://registry.npmjs.org/@bluelibs/logger-bundle/-/logger-bundle-1.5.2.tgz"
+  integrity sha512-RyGh00c+bkr8KmQs+DvrCmohmBD9g00hFhTz9gOIKum2QKnj1fHSONrRwIkt4cObswHGGZ/lX1/VIsASRmUwkg==
+  dependencies:
+    chalk "^2.4.2"
+
 "@emotion/babel-plugin@^11.11.0":
   version "11.11.0"
   resolved "https://registry.npmjs.org/@emotion/babel-plugin/-/babel-plugin-11.11.0.tgz"
@@ -2450,6 +2472,11 @@ node-releases@^2.0.13:
   resolved "https://registry.npmjs.org/node-releases/-/node-releases-2.0.13.tgz"
   integrity sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==
 
+nodemailer@^6.4.6:
+  version "6.9.7"
+  resolved "https://registry.npmjs.org/nodemailer/-/nodemailer-6.9.7.tgz"
+  integrity sha512-rUtR77ksqex/eZRLmQ21LKVH5nAAsVicAtAYudK7JgwenEDZ0UIQ1adUGqErz7sMkWYxWTTU1aeP2Jga6WQyJw==
+
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz"
@@ -2726,7 +2753,7 @@ react-animated-weather@^4.0.1:
   resolved "https://registry.npmjs.org/react-animated-weather/-/react-animated-weather-4.0.1.tgz"
   integrity sha512-ipEa3yW3rld1UAHAmm7Bltn5BOH3O2B491R0ws51kwFtqQ6fc5KWUiBQ0e4sO/XjoeqCkAN/Y98lWx1qZMR84g==
 
-react-dom@*, "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^17.0.0 || ^18.0.0", react-dom@^18.2.0, react-dom@>=16.6.0, react-dom@>=16.8.0, react-dom@18.2.0:
+react-dom@*, "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.1 || ^18.0.0", react-dom@^18.2.0, react-dom@>=16.6.0, react-dom@>=16.8.0, react-dom@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -2779,6 +2806,11 @@ readdirp@~3.6.0:
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
+
+reflect-metadata@^0.1.13:
+  version "0.1.14"
+  resolved "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.14.tgz"
+  integrity sha512-ZhYeb6nRaXCfhnndflDK8qI6ZQ/YcWZCISRAWICW9XYqMUwjZM9Z0DveWX/ABN01oxSHwVxKQmxeYZSsm0jh5A==
 
 reflect.getprototypeof@^1.0.3:
   version "1.0.4"
@@ -3188,6 +3220,11 @@ typed-array-length@^1.0.4:
     call-bind "^1.0.2"
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
+
+typedi@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.npmjs.org/typedi/-/typedi-0.10.0.tgz"
+  integrity sha512-v3UJF8xm68BBj6AF4oQML3ikrfK2c9EmZUyLOfShpJuItAqVBHWP/KtpGinkSsIiP6EZyyb6Z3NXyW9dgS9X1w==
 
 typescript@>=3.3.1, typescript@>=4.2.0:
   version "5.2.2"

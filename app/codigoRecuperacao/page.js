@@ -15,7 +15,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { theme, tokens } from '../theme';
-import FormLogin from '@/components/formLogin';
+import FormCodigo from '@/components/formCodigo';
 
 const buttons = [
     {
@@ -35,12 +35,12 @@ const buttons = [
         href: "/cadastro",
     },
     {
-        text: "Recuperar Senha",
-        href: "/recuperarSenha",
+        text: "Login",
+        href: "/login",
     },
     {
-        text: "Usuario",
-        href: "/user",
+        text: "Esqueci minha Senha",
+        href: "/recuperarSenha",
     },
   ];
 
@@ -65,7 +65,7 @@ const buttons = [
                         <Image src='/logo_horizontal.png' alt='' width={1000} height={400}/>
                     </Box>
                 } buttons={buttons} />
-                    <FormLogin/>
+                    <FormCodigo/>
                     
                 <Footer/>
             </Box>

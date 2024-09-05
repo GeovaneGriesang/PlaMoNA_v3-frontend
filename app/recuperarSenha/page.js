@@ -39,8 +39,8 @@ const buttons = [
         href: "/login",
     },
     {
-        text: "Recuperar Senha",
-        href: "/recuperarSenha",
+        text: "Já tenho um código",
+        href: "/codigoRecuperacao",
     },
   ];
 

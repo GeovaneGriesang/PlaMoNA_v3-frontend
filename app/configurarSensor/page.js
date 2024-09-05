@@ -15,7 +15,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { theme, tokens } from '../theme';
-import FormLogin from '@/components/formLogin';
+import FormConfiguracaoSensor from '@/components/FormConfiguracaoSensor.jsx';
 
 const buttons = [
     {
@@ -31,18 +31,12 @@ const buttons = [
         href: "/sobre",
     },
     {
-        text: "Cadastro",
-        href: "/cadastro",
-    },
-    {
-        text: "Recuperar Senha",
-        href: "/recuperarSenha",
-    },
-    {
-        text: "Usuario",
-        href: "/user",
+        text: "Login",
+        href: "/login",
     },
   ];
+
+  
 
   export default function Page() {
     
@@ -65,7 +59,7 @@ const buttons = [
                         <Image src='/logo_horizontal.png' alt='' width={1000} height={400}/>
                     </Box>
                 } buttons={buttons} />
-                    <FormLogin/>
+                    <FormConfiguracaoSensor/>
                     
                 <Footer/>
             </Box>

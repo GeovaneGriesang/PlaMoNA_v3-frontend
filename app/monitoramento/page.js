@@ -32,22 +32,29 @@ const buttons = [
         href: "/sobre",
     },
     {
-        text: "Cadastro",
-        href: "/cadastro",
+        text: "Login",
+        href: "/login",
     },
   ];
 
 export default function Page() {
-    const [activePaper, setActivePaper] = useState('dia');
+    
+    if(localStorage.getItem('periodoMonitoramento')==null){
+        localStorage.setItem('periodoMonitoramento', 'dia');
+    }
+    const [activePaper, setActivePaper] = useState(localStorage.getItem('periodoMonitoramento'));
     const handlePaperChange = (paper) => {
         setActivePaper(paper);
+        localStorage.setItem('periodoMonitoramento', paper);
     };
     const [data, setData] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
+            if(activePaper != 'comparar'){
             const result = await obterMedicao(activePaper);
             setData(result);
+            }
         }
 
         fetchData();
